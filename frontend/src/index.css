@@ -1,0 +1,36 @@
+@import '@fontsource-variable/manrope';
+@import '@fontsource/instrument-serif';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { color-scheme: light; }
+  body {
+    @apply font-sans text-navy-800 antialiased min-h-screen;
+    background:
+      radial-gradient(60rem 36rem at 85% -10%, #bfeed6 0%, transparent 60%),
+      radial-gradient(48rem 30rem at -10% 20%, #d4f3e3 0%, transparent 55%),
+      #e3f6ec;
+    background-attachment: fixed;
+  }
+  :focus-visible { @apply outline-none ring-2 ring-emerald-600 ring-offset-2 ring-offset-mint-100 rounded-md; }
+}
+
+@layer components {
+  .glass {
+    @apply rounded-3xl border border-white/70 bg-white/55 shadow-glass backdrop-blur-xl;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[.98];
+  }
+  .btn-primary { @apply btn bg-navy-800 text-white hover:bg-navy-700 shadow-lg shadow-navy-900/20; }
+  .btn-ghost { @apply btn bg-white/60 text-navy-800 border border-white/80 hover:bg-white/90; }
+  .btn-danger { @apply btn bg-rose-600 text-white hover:bg-rose-700; }
+  .eyebrow { @apply text-[11px] font-bold uppercase tracking-[.16em] text-emerald-700; }
+  .stat-num { @apply font-display text-5xl leading-none tabular-nums; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

@@ -1,0 +1,6 @@
+# Security-sensitive paths require review from the owner(s). Replace @OWNER with your GitHub user or team.
+/backend/src/security/   @OWNER
+/backend/src/auth/       @OWNER
+/backend/src/checks/     @OWNER
+/.github/                @OWNER
+/render.yaml             @OWNER

@@ -1,0 +1,14 @@
+{
+  "name": "mutualx",
+  "private": true,
+  "version": "0.1.0",
+  "description": "MutualX — security-first Instagram mutuals finder",
+  "scripts": {
+    "install:all": "npm ci --prefix backend && npm ci --prefix frontend",
+    "test": "npm test --prefix backend && npm test --prefix frontend",
+    "typecheck": "npm run typecheck --prefix backend && npm run typecheck --prefix frontend",
+    "build": "npm run build --prefix backend && npm run build --prefix frontend",
+    "test:e2e": "npm run test:e2e --prefix frontend",
+    "security:audit": "npm run security:audit --prefix backend && npm run security:audit --prefix frontend"
+  }
+}

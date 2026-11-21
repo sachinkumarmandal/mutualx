@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: mutualx-api
+    runtime: node
+    plan: starter
+    rootDir: backend
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: false # deploys are triggered by CI only after every gate passes
+    envVars:
+      - { key: NODE_ENV, value: production }
+      - { key: TRUST_PROXY, value: '1' }
+      - { key: COOKIE_SAMESITE, value: lax }
+      # Secrets: set these in the Render dashboard (sync:false = never stored in the repo).
+      - { key: FRONTEND_URL, sync: false }
+      - { key: API_PUBLIC_URL, sync: false }
+      - { key: MONGODB_URI, sync: false }
+      - { key: SESSION_SECRET, sync: false }
+      - { key: ENCRYPTION_KEYS, sync: false }
+      - { key: META_APP_ID, sync: false }
+      - { key: META_APP_SECRET, sync: false }
+      - { key: META_REDIRECT_URI, sync: false }
+      - { key: ADMIN_IG_USER_IDS, sync: false }

@@ -10,6 +10,10 @@ updates:
     directory: /frontend
     schedule: { interval: weekly }
     open-pull-requests-limit: 10
+    ignore:
+      # Tailwind 4 has a different config/CSS model; upgrade deliberately, not via an automatic PR.
+      - dependency-name: tailwindcss
+        update-types: [version-update:semver-major]
     groups:
       minor-and-patch: { update-types: [minor, patch] }
   - package-ecosystem: github-actions

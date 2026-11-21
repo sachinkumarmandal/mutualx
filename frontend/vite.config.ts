@@ -11,7 +11,8 @@ function cspApiOrigin(apiUrl: string): Plugin {
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', 'VITE_');
-  const apiUrl = env.VITE_API_URL ?? 'http://localhost:8080';
+  // `||` (not `??`): an empty VITE_API_URL (unset CI variable) must fall back too.
+  const apiUrl = env.VITE_API_URL || (mode === 'production' ? 'https://api.invalid' : 'http://localhost:8080');
   return {
     // Relative base so the same build works on GitHub Pages project sites and custom domains.
     base: './',

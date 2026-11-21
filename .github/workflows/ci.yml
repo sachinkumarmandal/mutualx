@@ -122,7 +122,7 @@ jobs:
         working-directory: frontend
         env:
           VITE_API_URL: ${{ vars.API_PUBLIC_URL || 'https://api.invalid' }}
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v3
         with: { path: frontend/dist }
       - uses: actions/deploy-pages@v4

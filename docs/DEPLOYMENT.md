@@ -52,3 +52,7 @@ CI (`.github/workflows/ci.yml`) gates both deploys on: secret scan, typecheck, u
 - **Frontend:** re-run the *CI* workflow on the last good commit (Actions → Run workflow on that ref), or `git revert` and push.
 - **Secrets suspected exposed:** rotate immediately (Meta app secret, `SESSION_SECRET`, `ENCRYPTION_KEYS`, Mongo password), which signs all users out and invalidates stored tokens; then disconnect affected users.
 - **Bad data change:** restore the Atlas backup to a new cluster, verify, then repoint `MONGODB_URI`.
+
+## Troubleshooting CI
+- **`secret-scan` fails on the very first push** with `ambiguous argument '<sha>^..<sha>'` and "no leaks found in partial scan": the gitleaks action tries to read the parent of the repository's root commit, which does not exist. It is not a leak and does not recur from the second push onward. Push any new commit (or re-run with *Run workflow*) and it passes.
+- **`deploy-frontend` fails at `configure-pages`**: GitHub Pages is not enabled yet. Settings → Pages → Source: **GitHub Actions**, then re-run the workflow.

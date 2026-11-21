@@ -11,5 +11,5 @@ export default defineConfig({
     { name: 'desktop', use: { ...devices['Desktop Chrome'] } },
     { name: 'mobile', use: { ...devices['Pixel 7'] } },
   ],
-  webServer: { command: 'npm run build && npm run preview', url: 'http://localhost:4173', reuseExistingServer: !process.env.CI, timeout: 120_000 },
+  webServer: { command: 'npm run build && npm run preview', env: { VITE_API_URL: 'http://localhost:8080' }, url: 'http://localhost:4173', reuseExistingServer: !process.env.CI, timeout: 120_000 },
 });

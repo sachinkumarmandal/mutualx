@@ -110,6 +110,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: github-pages
     permissions:
+      contents: read   # job-level permissions replace the top-level block; deploy-pages needs these to find the artifact
+      actions: read
       pages: write
       id-token: write
     steps:
